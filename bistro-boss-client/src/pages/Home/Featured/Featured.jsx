@@ -9,13 +9,13 @@ const Featured = () => {
         subHeading="Check it out"
         heading="Featured Item"
       ></SectionTitle>
-      <div className="md:flex justify-center items-center px-36 py-20 pt-12">
+      <div className="md:flex justify-center items-center px-8 py-12 xl:px-36 xl:py-20 pt-12 space-y-4">
         <div>
           <img src={featuredImg} alt="" />
         </div>
         <div className="md:ml-10">
           <p>Aug 20, 2024</p>
-          <p className="uppercase">Where Can i get some?</p>
+          <p className="uppercase font-bold">Where Can i get some?</p>
           <p>
             Savor the perfect blend of flavor and freshness with our delicious
             creations. From hearty meals to delightful treats, each dish is
