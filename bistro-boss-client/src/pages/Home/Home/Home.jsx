@@ -5,14 +5,20 @@ import PopulerMenu from "../PopulerMenu/PopulerMenu";
 import Featured from "../Featured/Featured";
 import Testimonials from "../Testimonials/Testimonials";
 import BistroBoss from "../BistroBoss/BistroBoss";
+import Contact from "../Contact/contact";
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <Category />
+      <div className="mx-20">
+        <Category />
+      </div>
       <BistroBoss />
-      <PopulerMenu />
+      <div className="mx-20">
+        <PopulerMenu />
+        <Contact />
+      </div>
       <Featured />
       <Testimonials />
     </div>
