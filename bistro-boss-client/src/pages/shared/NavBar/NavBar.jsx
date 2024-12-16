@@ -2,7 +2,7 @@ const NavBar = () => {
   const navOptions = (
     <>
       <li>
-        <a>Item 555</a>
+        <a>Item 1</a>
       </li>
       <li tabIndex={0}>
         <a className="justify-between">
