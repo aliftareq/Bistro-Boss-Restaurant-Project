@@ -6,10 +6,14 @@ import Featured from "../Featured/Featured";
 import Testimonials from "../Testimonials/Testimonials";
 import BistroBoss from "../BistroBoss/BistroBoss";
 import Contact from "../Contact/contact";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
-    <div>
+    <section>
+      <Helmet>
+        <title>BISTRO | Home</title>
+      </Helmet>
       <Banner />
       <div className="mx-20">
         <Category />
@@ -20,8 +24,10 @@ const Home = () => {
         <Contact />
       </div>
       <Featured />
-      <Testimonials />
-    </div>
+      <div className="mx-5 md:mx-20">
+        <Testimonials />
+      </div>
+    </section>
   );
 };
 
