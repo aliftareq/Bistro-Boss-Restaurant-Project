@@ -1,10 +1,18 @@
-import React from "react";
+import Cover from "../../shared/Cover/Cover";
+import MenuItem from "../../shared/MenuItem/MenuItem";
 
-const MenuCategory = () => {
+const MenuCategory = ({ items, title, img: img }) => {
   return (
-    <div>
-      <h1>askdl</h1>
-    </div>
+    <section>
+      {title && <Cover img={img} title={title}></Cover>}
+      <div className="mx-20 my-10">
+        <div className="grid md:grid-cols-2 gap-10">
+          {items?.map((item) => (
+            <MenuItem key={item._id} item={item}></MenuItem>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
