@@ -37,25 +37,25 @@ const Menu = () => {
       </div>
       <MenuCategory
         items={desserts}
-        title="Desserts"
+        title="desserts"
         img={dessertImg}
         text="Indulge in our decadent dessert selection, crafted to satisfy every sweet craving. From rich classics to modern delights, each treat is a celebration of flavor and finesse."
       />
       <MenuCategory
         items={pizzas}
-        title="Pizza"
+        title="pizzas"
         img={pizzaImg}
         text="Discover our handcrafted pizzas, baked to perfection with fresh, premium ingredients. From classic favorites to bold flavors, each slice is a taste of culinary excellence."
       />
       <MenuCategory
         items={salads}
-        title="Salad"
+        title="salads"
         img={saladImg}
         text="Refresh your palate with our vibrant salads, made from the freshest seasonal ingredients. Each bowl is a perfect balance of crisp, healthy, and delicious flavors."
       />
       <MenuCategory
         items={soups}
-        title="Soup"
+        title="soups"
         img={soupImg}
         text="Warm your soul with our hearty and flavorful soups, crafted with love and fresh ingredients. Each bowl is a comforting hug in every sip"
       />
