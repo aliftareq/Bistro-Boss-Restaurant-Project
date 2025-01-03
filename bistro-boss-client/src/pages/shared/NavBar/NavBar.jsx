@@ -4,13 +4,19 @@ const NavBar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link className="hover:text-yellow-300" to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/menu">Our Menu</Link>
+        <Link className="hover:text-yellow-300" to="/menu">
+          Our Menu
+        </Link>
       </li>
       <li>
-        <Link to="/order/salads">Order Food</Link>
+        <Link className="hover:text-yellow-300" to="/order/salads">
+          Our Shop
+        </Link>
       </li>
     </>
   );
