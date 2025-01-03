@@ -18,6 +18,16 @@ const NavBar = () => {
           Our Shop
         </Link>
       </li>
+      <li>
+        <Link className="hover:text-yellow-300" to="/">
+          Contact Us
+        </Link>
+      </li>
+      <li>
+        <Link className="hover:text-yellow-300" to="/login">
+          Login
+        </Link>
+      </li>
     </>
   );
 
