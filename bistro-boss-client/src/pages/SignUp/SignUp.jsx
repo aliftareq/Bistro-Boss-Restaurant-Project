@@ -4,39 +4,44 @@ import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import "./SignUp.css";
 import AuthImg from "../../assets/others/authentication2.png";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const [disabled, setDisabled] = useState(true);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
-      const user = result.user;
-      console.log(user);
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("user profile info updated");
+          reset();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You have successfully Signed Up",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     });
   };
-
-  const { createUser } = useContext(AuthContext);
-
-  //   const handleLogin = (e) => {
-  //     e.preventDefault();
-  //     const email = e.target.email.value;
-  //     const password = e.target.password.value;
-  //     console.log(email, password);
-  //     signIn(email, password).then((result) => {
-  //       const user = result.user;
-  //       console.log(user);
-  //     });
-  //   };
 
   return (
     <>
@@ -55,12 +60,25 @@ const SignUp = () => {
                 <input
                   type="text"
                   {...register("name", { required: true })}
-                  name="name"
                   placeholder="Type Here"
                   className="input input-bordered"
                 />
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("photoURL", { required: true })}
+                  placeholder="Enter a Photo URL"
+                  className="input input-bordered"
+                />
+                {errors.photoURL && (
+                  <span className="text-red-500">Photo URL is required</span>
                 )}
               </div>
               <div className="form-control">
