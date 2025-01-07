@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { BsCart4 } from "react-icons/bs";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -31,6 +32,12 @@ const NavBar = () => {
       <li>
         <Link className="hover:text-yellow-300" to="/contact">
           Contact Us
+        </Link>
+      </li>
+      <li>
+        <Link className="hover:text-yellow-300" to="/">
+          <BsCart4 className="text-xl" />
+          <div className="badge badge-secondary">+0</div>
         </Link>
       </li>
     </>
