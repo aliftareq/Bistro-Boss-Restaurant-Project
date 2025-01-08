@@ -37,7 +37,7 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="hover:text-yellow-300" to="/">
+        <Link className="hover:text-yellow-300" to="/dashboard/cart">
           <BsCart4 className="text-xl" />
           <div className="badge badge-secondary">+{cart?.length}</div>
         </Link>
