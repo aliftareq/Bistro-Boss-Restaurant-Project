@@ -11,13 +11,17 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
-  const { signIn } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  const { signIn } = useContext(AuthContext);
   const location = useLocation();
+  const { googleSignIn } = useAuth();
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const from = location?.state?.from?.pathname || "/";
   console.log("state in the location", location.state);
@@ -25,6 +29,21 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
+      console.log(result.user);
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        image: result.user?.photoURL,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        navigate(from, { replace: true });
+      });
+    });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -121,7 +140,7 @@ const Login = () => {
                 <p className="text-black">Or Sign-In With</p>
                 <p className="flex justify-evenly text-2xl pt-2">
                   <FaFacebookF />
-                  <FaGoogle />
+                  <FaGoogle onClick={handleGoogleSignIn} />
                   <FaGithub />
                 </p>
               </div>

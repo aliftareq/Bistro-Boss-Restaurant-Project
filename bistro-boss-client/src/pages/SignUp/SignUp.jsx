@@ -7,10 +7,30 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+  const { googleSignIn } = useAuth();
   const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    console.log("google sign in");
+    googleSignIn().then((result) => {
+      console.log(result.user);
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        image: result.user?.photoURL,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        navigate("/");
+      });
+    });
+  };
 
   const {
     register,
@@ -20,22 +40,33 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password).then((result) => {
+    createUser(data?.email, data?.password).then((result) => {
       const loggedUser = result.user;
-      console.log(loggedUser);
-      updateUserProfile(data.name, data.photoURL)
+      console.log("loggeduser", loggedUser);
+      updateUserProfile(data?.name, data?.photoURL)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "You have successfully Signed Up",
-            showConfirmButton: false,
-            timer: 1500,
+          //create user data in DB
+          const userInfo = {
+            name: data?.name,
+            email: data?.email,
+            image: data?.photoURL,
+            uid: result?.user?.uid,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              //reseting form, giving success-message & navigate to homePage
+              console.log("user added to the database");
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You have successfully Signed Up",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => {
           console.log(error);
@@ -143,7 +174,7 @@ const SignUp = () => {
                 <p className="text-black">Or Sign up With</p>
                 <p className="flex justify-evenly text-2xl pt-2">
                   <FaFacebookF />
-                  <FaGoogle />
+                  <FaGoogle onClick={handleGoogleSignIn} />
                   <FaGithub />
                 </p>
               </div>
