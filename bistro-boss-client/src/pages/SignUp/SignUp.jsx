@@ -24,6 +24,7 @@ const SignUp = () => {
         name: result.user?.displayName,
         email: result.user?.email,
         image: result.user?.photoURL,
+        uid: result?.user?.uid,
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
@@ -159,7 +160,7 @@ const SignUp = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-neutral bg-[#D1A054] text-white"
+                  className="btn bg-[#D1A054] text-white hover:bg-orange-400"
                   type="submit"
                   value="Sign-Up"
                 />
@@ -172,11 +173,11 @@ const SignUp = () => {
                   </Link>
                 </p>
                 <p className="text-black">Or Sign up With</p>
-                <p className="flex justify-evenly text-2xl pt-2">
-                  <FaFacebookF />
-                  <FaGoogle onClick={handleGoogleSignIn} />
-                  <FaGithub />
-                </p>
+                <div className="flex justify-evenly text-2xl pt-2">
+                  <button className="btn w-full bg-[#D1A054] flex items-center hover:bg-orange-400">
+                    <FaGoogle onClick={handleGoogleSignIn} /> Sign with Google
+                  </button>
+                </div>
               </div>
             </form>
           </div>

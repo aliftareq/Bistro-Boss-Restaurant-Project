@@ -1,4 +1,4 @@
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaUsers } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useUsers from "../../../Hooks/useUsers";
@@ -8,10 +8,26 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const AllUsers = () => {
   const [users, refetch] = useUsers();
-  const { user, deleteUserProfile } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   console.log(user);
 
   const axiosSecure = useAxiosSecure();
+
+  const handleMakeAdmin = (id) => {
+    axiosSecure.patch(`/users/admin/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User role is updated 'Admin' Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      }
+    });
+  };
 
   const handleDelete = (id) => {
     console.log(id);
@@ -73,21 +89,31 @@ const AllUsers = () => {
                   <td>
                     <span>{user?.email}</span>
                   </td>
-                  <td>{user?.role || "user"}</td>
-                  <th>
+                  <td>
+                    {user.role === "admin" ? (
+                      "Admin"
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user._id)}
+                        className="btn bg-[#D1A054] text-white"
+                      >
+                        <FaUsers />
+                      </button>
+                    )}
+                  </td>
+                  <td>
                     <button
-                      onClick={() => handleDelete(user._id, user.uid)}
+                      onClick={() => handleDelete(user._id)}
                       className="btn bg-[#B91C1C] text-white"
                     >
                       <FaRegTrashAlt />
                     </button>
-                  </th>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        ;
       </div>
     </div>
   );

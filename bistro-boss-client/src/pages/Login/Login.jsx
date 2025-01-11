@@ -37,6 +37,7 @@ const Login = () => {
         name: result.user?.displayName,
         email: result.user?.email,
         image: result.user?.photoURL,
+        uid: result?.user?.uid,
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
@@ -65,7 +66,6 @@ const Login = () => {
   };
   const handlevalidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
-    console.log(user_captcha_value);
     if (validateCaptcha(user_captcha_value)) {
       setDisabled(false);
     } else {
@@ -125,7 +125,7 @@ const Login = () => {
               <div className="form-control mt-6">
                 <input
                   disabled={disabled}
-                  className="btn btn-neutral bg-[#D1A054] text-white"
+                  className="btn bg-[#D1A054] text-white hover:bg-orange-400"
                   type="submit"
                   value="Login"
                 />
@@ -138,11 +138,11 @@ const Login = () => {
                   </Link>
                 </p>
                 <p className="text-black">Or Sign-In With</p>
-                <p className="flex justify-evenly text-2xl pt-2">
-                  <FaFacebookF />
-                  <FaGoogle onClick={handleGoogleSignIn} />
-                  <FaGithub />
-                </p>
+                <div className="flex justify-evenly text-2xl pt-2">
+                  <button className="btn w-full bg-[#D1A054] flex items-center hover:bg-orange-400">
+                    <FaGoogle onClick={handleGoogleSignIn} /> Sign with Google
+                  </button>
+                </div>
               </div>
             </form>
           </div>
