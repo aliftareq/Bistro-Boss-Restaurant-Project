@@ -58,8 +58,8 @@ const AuthProvider = ({ children }) => {
         //get token and store in client side
         const userInfo = { email: currentUser?.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
+          if (res?.data?.token) {
+            localStorage.setItem("access-token", res?.data?.token);
           }
         });
       } else {
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   const authInfo = {
     user,

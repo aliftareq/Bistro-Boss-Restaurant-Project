@@ -28,6 +28,13 @@ const SignUp = () => {
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have successfully signed-Up.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       });
     });
@@ -174,8 +181,11 @@ const SignUp = () => {
                 </p>
                 <p className="text-black">Or Sign up With</p>
                 <div className="flex justify-evenly text-2xl pt-2">
-                  <button className="btn w-full bg-[#D1A054] flex items-center hover:bg-orange-400">
-                    <FaGoogle onClick={handleGoogleSignIn} /> Sign with Google
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn w-full bg-[#D1A054] flex items-center hover:bg-orange-400"
+                  >
+                    <FaGoogle /> Sign with Google
                   </button>
                 </div>
               </div>
