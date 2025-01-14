@@ -1,35 +1,16 @@
 import { FaRegTrashAlt, FaUsers } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useUsers from "../../../Hooks/useUsers";
+import useMenu from "../../../Hooks/useMenu";
+import { FiEdit } from "react-icons/fi";
 import Swal from "sweetalert2";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
-const AllUsers = () => {
-  const [users, refetch] = useUsers();
-  const { user } = useContext(AuthContext);
-  console.log(user);
+const ManageItems = () => {
+  const [menu, loading, refetch] = useMenu();
 
   const axiosSecure = useAxiosSecure();
 
-  const handleMakeAdmin = (id) => {
-    axiosSecure.patch(`/users/admin/${id}`).then((res) => {
-      console.log(res.data);
-      if (res.data.modifiedCount > 0) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User role is updated 'Admin' Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        refetch();
-      }
-    });
-  };
-
-  const handleDelete = (id) => {
+  const handleDeleteItem = (id) => {
     console.log(id);
     Swal.fire({
       title: "Are you sure?",
@@ -41,11 +22,11 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${id}`).then((res) => {
+        axiosSecure.delete(`/menu/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: "User has been deleted.",
+              text: "The Item has been deleted.",
               icon: "success",
             });
             refetch();
@@ -54,18 +35,18 @@ const AllUsers = () => {
       }
     });
   };
+
   return (
     <div>
-      {/* page title  */}
       <SectionTitle
-        subHeading="How many???"
-        heading="MANAGE ALL USERS"
+        subHeading="Hurry Up!"
+        heading="MANAGE ALL ITEMS"
       ></SectionTitle>
       {/* data table  */}
       <div className="bg-white p-8">
         <div className="flex justify-evenly items-center mb-6">
           <h2 className="text-2xl font-semibold uppercase">
-            Total Users: {users?.length}
+            Total Items: {menu.length}
           </h2>
         </div>
         <div className="overflow-x-auto rounded-t-lg border">
@@ -74,38 +55,42 @@ const AllUsers = () => {
             <thead className="bg-[#D1A054] text-center text-white uppercase">
               <tr>
                 <th>SL No.</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Action</th>
+                <th>Item Image</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Update</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               {/* rows */}
-              {users.map((user, idx) => (
-                <tr key={user._id} className="text-center">
+              {menu.map((item, idx) => (
+                <tr key={item._id} className="text-center">
                   <th>{idx + 1}</th>
-                  <td>
-                    <span>{user.name}</span>
+                  <td className="flex justify-center items-center">
+                    <img
+                      className="w-16 h-16 rounded-xl"
+                      src={item?.image}
+                      alt="item"
+                    />
                   </td>
                   <td>
-                    <span>{user?.email}</span>
+                    <span>{item?.name}</span>
                   </td>
                   <td>
-                    {user.role === "admin" ? (
-                      "Admin"
-                    ) : (
-                      <button
-                        onClick={() => handleMakeAdmin(user._id)}
-                        className="btn bg-[#D1A054] text-white"
-                      >
-                        <FaUsers />
-                      </button>
-                    )}
+                    <span>${item?.price}</span>
                   </td>
                   <td>
                     <button
-                      onClick={() => handleDelete(user._id)}
+                      onClick={() => handleUpdateItem(item._id)}
+                      className="btn bg-[#D1A054] text-white"
+                    >
+                      <FiEdit />
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDeleteItem(item._id)}
                       className="btn bg-[#B91C1C] text-white"
                     >
                       <FaRegTrashAlt />
@@ -121,4 +106,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default ManageItems;
