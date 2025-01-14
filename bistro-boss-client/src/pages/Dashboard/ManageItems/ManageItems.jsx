@@ -4,6 +4,7 @@ import useMenu from "../../../Hooks/useMenu";
 import { FiEdit } from "react-icons/fi";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, loading, refetch] = useMenu();
@@ -81,12 +82,11 @@ const ManageItems = () => {
                     <span>${item?.price}</span>
                   </td>
                   <td>
-                    <button
-                      onClick={() => handleUpdateItem(item._id)}
-                      className="btn bg-[#D1A054] text-white"
-                    >
-                      <FiEdit />
-                    </button>
+                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                      <button className="btn bg-[#D1A054] text-white">
+                        <FiEdit />
+                      </button>
+                    </Link>
                   </td>
                   <td>
                     <button

@@ -19,7 +19,9 @@ import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
   const location = useLocation();
-  console.log(location.pathname);
+  const isBgWhite =
+    location?.pathname?.includes("addItems") ||
+    location?.pathname?.includes("updateItem");
 
   // To do : get admin data from database;
   const [isAdmin] = useAdmin();
@@ -120,13 +122,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div
-        className={`${
-          location.pathname.includes("addItems" || "updateItems")
-            ? "bg-white"
-            : "bg-base-200"
-        } flex-1 p-8`}
-      >
+      <div className={`${isBgWhite ? "bg-white" : "bg-base-200"} flex-1 p-8`}>
         <Outlet></Outlet>
       </div>
     </div>
