@@ -22,6 +22,11 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
+        <Link className="hover:text-yellow-300" to="/contact">
+          Contact Us
+        </Link>
+      </li>
+      <li>
         <Link className="hover:text-yellow-300" to="/menu">
           Our Menu
         </Link>
@@ -32,16 +37,23 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="hover:text-yellow-300" to="/contact">
-          Contact Us
-        </Link>
-      </li>
-      <li>
         <Link className="hover:text-yellow-300" to="/dashboard/cart">
           <BsCart4 className="text-xl" />
           <div className="badge badge-secondary">+{cart?.length}</div>
         </Link>
       </li>
+      {user && (
+        <li>
+          <div>
+            <img
+              title={user?.displayName}
+              className="w-8 rounded-xl"
+              src={user?.photoURL}
+              alt="Photo"
+            />
+          </div>
+        </li>
+      )}
     </>
   );
 

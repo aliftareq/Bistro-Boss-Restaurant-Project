@@ -12,12 +12,14 @@ import { GiShoppingBag } from "react-icons/gi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { ImSpoonKnife } from "react-icons/im";
 
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const location = useLocation();
+  console.log(location.pathname);
 
   // To do : get admin data from database;
   const [isAdmin] = useAdmin();
@@ -26,6 +28,10 @@ const Dashboard = () => {
     <div className="flex">
       {/* dashboard sidebar  */}
       <div className="w-64 min-h-screen bg-[#D1A054]">
+        <div className="text-center my-5">
+          <h2 className="font-bold text-2xl">Bistro Boss</h2>
+          <p className="font-semibold text-lg">Restaurant</p>
+        </div>
         <ul className="menu font-semibold uppercase">
           {isAdmin ? (
             <>
@@ -114,7 +120,13 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="bg-base-200 flex-1 p-8">
+      <div
+        className={`${
+          location.pathname.includes("addItems" || "updateItems")
+            ? "bg-white"
+            : "bg-base-200"
+        } flex-1 p-8`}
+      >
         <Outlet></Outlet>
       </div>
     </div>
