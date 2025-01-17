@@ -4,6 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -42,15 +43,25 @@ const Cart = () => {
         subHeading="My Cart"
         heading="WANNA ADD MORE?"
       ></SectionTitle>
+      {/* cart added items in table */}
       <div className="bg-white p-8">
         <div className="flex justify-evenly items-center mb-6">
           <h2 className="text-2xl font-semibold uppercase">
             Total Orders: {cart?.length}
           </h2>
           <h2 className="text-2xl font-semibold uppercase">
-            Total Price: {totalPrice}
+            Total Price: ${totalPrice}
           </h2>
-          <button className="btn bg-[#D1A054] text-white">Pay</button>
+
+          {cart.length === 0 ? (
+            <button disabled={true} className="btn bg-[#D1A054] text-white">
+              Pay
+            </button>
+          ) : (
+            <Link to="/dashboard/payment">
+              <button className="btn bg-[#D1A054] text-white">Pay</button>
+            </Link>
+          )}
         </div>
         <div className="overflow-x-auto rounded-t-lg border">
           <table className="table">
