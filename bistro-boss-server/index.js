@@ -233,7 +233,6 @@ async function run() {
             })
         })
 
-        //payment history
         app.post('/payments', async (req, res) => {
             const payment = req.body;
             const paymentResult = await paymentCollection.insertOne(payment)
@@ -245,6 +244,15 @@ async function run() {
             const deleteResult = await cartCollection.deleteMany(query)
             //console.log('payment Info', payment);
             res.send({ paymentResult, deleteResult })
+        })
+
+        app.get("/payments/:email", verifytoken, async (req, res) => {
+            const query = { email: req?.params?.email }
+            if (req.params.email !== req.decoded.email) {
+                return res.status(403).send({ message: 'forbidden access' })
+            }
+            const result = await paymentCollection.find(query).toArray()
+            res.send(result)
         })
 
         // Send a ping to confirm a successful connection

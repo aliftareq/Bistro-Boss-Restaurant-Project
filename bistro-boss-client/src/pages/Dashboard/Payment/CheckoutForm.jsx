@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [error, setError] = useState("");
@@ -12,7 +14,8 @@ const CheckoutForm = () => {
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
+  const navigate = useNavigate();
   const totalPrice = cart?.reduce((total, item) => total + item.price, 0);
 
   //creating payment intent by api
@@ -84,13 +87,32 @@ const CheckoutForm = () => {
           email: user?.email,
           price: totalPrice,
           transactionId: paymentIntent.id,
-          date: new Date(), //utc date convert => use moment.js
+          date: new Date().toLocaleDateString("en-US", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }),
           cartIds: cart.map((item) => item._id),
           menuItemIds: cart.map((item) => item.menuId),
           status: "paid",
         };
         const res = await axiosSecure.post("/payments", payment);
         console.log("payment info", res.data);
+        if (
+          res?.data?.paymentResult?.acknowledged &&
+          res?.data?.deleteResult?.acknowledged
+        ) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your payment has been cleared, enjoy your meal!!!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+          navigate("/dashboard/paymentHistory");
+        }
       }
     }
   };
