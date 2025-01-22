@@ -98,7 +98,7 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          <div class="divider"></div>
+          <div className="divider"></div>
           <li>
             <NavLink to="/">
               <FaHome /> Home
