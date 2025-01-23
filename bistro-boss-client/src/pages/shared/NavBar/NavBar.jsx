@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { BsCart4 } from "react-icons/bs";
 import useCart from "../../../Hooks/useCart";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+
   const [cart] = useCart();
 
   const handleLogout = () => {
@@ -36,6 +39,20 @@ const NavBar = () => {
           Our Shop
         </Link>
       </li>
+      {user && isAdmin && (
+        <li>
+          <Link className="hover:text-yellow-300" to="/dashboard/adminHome">
+            Dashboard
+          </Link>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <Link className="hover:text-yellow-300" to="/dashboard/userHome">
+            Dashboard
+          </Link>
+        </li>
+      )}
       <li>
         <Link className="hover:text-yellow-300" to="/dashboard/cart">
           <BsCart4 className="text-xl" />
