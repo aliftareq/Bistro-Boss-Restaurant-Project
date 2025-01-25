@@ -259,7 +259,7 @@ async function run() {
         app.get('/admin-stats', verifytoken, verifyAdmin, async (req, res) => {
             const user = await usersCollection.estimatedDocumentCount()
             const menuItems = await menuCollection.estimatedDocumentCount()
-            const oreders = await paymentCollection.estimatedDocumentCount()
+            const orders = await paymentCollection.estimatedDocumentCount()
             const revenue = await paymentCollection
                 .aggregate([{ $group: { _id: null, total: { $sum: "$price" } } }])
                 .toArray()
@@ -268,7 +268,7 @@ async function run() {
             res.send({
                 user,
                 menuItems,
-                oreders,
+                orders,
                 revenue
             })
         })

@@ -18,6 +18,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 
 export const router = createBrowserRouter([
   {
@@ -85,14 +86,6 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "users",
-        element: (
-          <AdminRoute>
-            <AllUsers></AllUsers>
-          </AdminRoute>
-        ),
-      },
-      {
         path: "addItems",
         element: (
           <AdminRoute>
@@ -109,6 +102,14 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "bookings",
+        element: (
+          <AdminRoute>
+            <ManageBookings></ManageBookings>
+          </AdminRoute>
+        ),
+      },
+      {
         path: "updateItem/:id",
         element: (
           <AdminRoute>
@@ -117,6 +118,14 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/menu/${params.id}`),
+      },
+      {
+        path: "users",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
     ],
   },
