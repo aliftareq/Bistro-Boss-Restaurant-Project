@@ -45,21 +45,23 @@ const Cart = () => {
       ></SectionTitle>
       {/* cart added items in table */}
       <div className="bg-white p-8">
-        <div className="flex justify-evenly items-center mb-6">
-          <h2 className="text-2xl font-semibold uppercase">
+        <div className="md:flex space-y-4 md:space-y-0 justify-evenly items-center mb-6">
+          <h2 className="text-lg md:text-2xl font-semibold uppercase">
             Total Orders: {cart?.length}
           </h2>
-          <h2 className="text-2xl font-semibold uppercase">
+          <h2 className="text-lg md:text-2xl font-semibold uppercase">
             Total Price: ${totalPrice}
           </h2>
 
           {cart.length === 0 ? (
-            <button disabled={true} className="btn bg-[#D1A054] text-white">
+            <button disabled={true} className="btn text-white mt-5 md:mt-0">
               Pay
             </button>
           ) : (
             <Link to="/dashboard/payment">
-              <button className="btn bg-[#D1A054] text-white">Pay</button>
+              <button className="btn bg-[#D1A054] text-white mt-5 md:mt-0">
+                Pay
+              </button>
             </Link>
           )}
         </div>

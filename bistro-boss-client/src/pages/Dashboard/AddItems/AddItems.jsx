@@ -55,7 +55,7 @@ const AddItems = () => {
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-base-200 mx-12 md:mx-32 mb-20 p-8 md:p-10"
+          className="bg-base-200 mx-4 md:mx-32 mb-20 p-8 md:p-10"
         >
           <div className="form-control">
             <label className="label">
