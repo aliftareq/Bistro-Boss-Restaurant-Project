@@ -85,7 +85,7 @@ const Reservation = () => {
               />
             </div>
           </div>
-          <div className="flex justify-center items-center my-5">
+          <div className="flex justify-center items-center mt-10">
             <input
               className="btn w-1/2 mx-auto uppercase text-white bg-gradient-to-l from-[#B58130] to-[#835D23] hover:opacity-90"
               type="submit"

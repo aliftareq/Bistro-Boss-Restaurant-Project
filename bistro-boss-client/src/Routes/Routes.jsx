@@ -20,11 +20,13 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import Reservation from "../pages/Dashboard/Reservation/Reservation";
+import ErrorPage from "../pages/shared/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

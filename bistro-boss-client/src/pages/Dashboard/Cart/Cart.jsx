@@ -45,7 +45,7 @@ const Cart = () => {
       ></SectionTitle>
       {/* cart added items in table */}
       <div className="bg-white p-8">
-        <div className="md:flex space-y-4 md:space-y-0 justify-evenly items-center mb-6">
+        <div className="md:flex space-y-4 md:space-y-0 justify-evenly items-center mb-6 font-cinzel">
           <h2 className="text-lg md:text-2xl font-semibold uppercase">
             Total Orders: {cart?.length}
           </h2>
@@ -74,7 +74,7 @@ const Cart = () => {
                 <th>Item Image</th>
                 <th>Item Name</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
