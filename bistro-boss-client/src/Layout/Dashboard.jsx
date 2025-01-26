@@ -23,7 +23,8 @@ const Dashboard = () => {
   const isBgWhite =
     location?.pathname?.includes("addItems") ||
     location?.pathname?.includes("updateItem") ||
-    location?.pathname?.includes("reservation");
+    location?.pathname?.includes("reservation") ||
+    location?.pathname?.includes("payment");
 
   const [isAdmin] = useAdmin();
   const [drawerOpen, setDrawerOpen] = useState(false); // Added for drawer toggle state
