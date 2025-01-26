@@ -63,7 +63,7 @@ const ContactUs = () => {
       {/* contact form  */}
       <div>
         <SectionTitle
-          subHeading="---Send Us a Message---"
+          subHeading="Send Us a Message"
           heading="CONTACT FORM"
         ></SectionTitle>
         <form className="bg-base-200 mx-12 md:mx-32 mb-20 p-8 md:p-10">
