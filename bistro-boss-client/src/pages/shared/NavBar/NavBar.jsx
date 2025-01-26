@@ -59,18 +59,6 @@ const NavBar = () => {
           <div className="badge badge-secondary">+{cart?.length}</div>
         </Link>
       </li>
-      {user && (
-        <li>
-          <div>
-            <img
-              title={user?.displayName}
-              className="w-8 rounded-xl"
-              src={user?.photoURL}
-              alt="Photo"
-            />
-          </div>
-        </li>
-      )}
     </>
   );
 
