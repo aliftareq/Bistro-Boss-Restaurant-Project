@@ -24,7 +24,8 @@ const Dashboard = () => {
     location?.pathname?.includes("addItems") ||
     location?.pathname?.includes("updateItem") ||
     location?.pathname?.includes("reservation") ||
-    location?.pathname?.includes("payment");
+    location?.pathname?.includes("payment") ||
+    location?.pathname?.includes("review");
 
   const [isAdmin] = useAdmin();
   const [drawerOpen, setDrawerOpen] = useState(false); // Added for drawer toggle state
@@ -131,7 +132,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/review">
+                  <NavLink to="/dashboard/mybookings">
                     <FaList /> My Bookings
                   </NavLink>
                 </li>

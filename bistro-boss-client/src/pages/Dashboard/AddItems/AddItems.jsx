@@ -116,7 +116,7 @@ const AddItems = () => {
               className="file-input file-input-bordered w-full max-w-xs"
             />
           </div>
-          <div className="my-5">
+          <div className="my-5 flex justify-center items-center">
             <input
               className="btn text-white bg-gradient-to-l from-[#B58130] to-[#835D23] hover:opacity-90"
               type="submit"

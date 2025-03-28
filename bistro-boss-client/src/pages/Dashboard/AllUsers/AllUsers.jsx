@@ -64,7 +64,7 @@ const AllUsers = () => {
       {/* data table  */}
       <div className="bg-white p-8">
         <div className="flex justify-evenly items-center mb-6">
-          <h2 className="text-2xl font-semibold uppercase">
+          <h2 className="text-2xl font-semibold uppercase font-cinzel">
             Total Users: {users?.length}
           </h2>
         </div>

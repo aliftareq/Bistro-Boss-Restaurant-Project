@@ -21,6 +21,8 @@ import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import Reservation from "../pages/Dashboard/Reservation/Reservation";
 import ErrorPage from "../pages/shared/ErrorPage/ErrorPage";
+import AddReviews from "../pages/Dashboard/AddReviews/AddReviews";
+import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -72,16 +74,24 @@ export const router = createBrowserRouter([
         element: <Reservation></Reservation>,
       },
       {
-        path: "cart",
-        element: <Cart></Cart>,
-      },
-      {
         path: "payment",
         element: <Payment></Payment>,
       },
       {
         path: "paymentHistory",
         element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "cart",
+        element: <Cart></Cart>,
+      },
+      {
+        path: "review",
+        element: <AddReviews></AddReviews>,
+      },
+      {
+        path: "mybookings",
+        element: <MyBookings></MyBookings>,
       },
       //admin routes
       {

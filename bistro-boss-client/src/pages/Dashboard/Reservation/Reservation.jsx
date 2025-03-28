@@ -12,7 +12,7 @@ const Reservation = () => {
           subHeading="Reservation"
           heading="BOOK A TABLE"
         ></SectionTitle>
-        <form className="mx-12 md:mx-16 mb-20 p-8 md:p-10">
+        <form className="mx-2 md:mx-16 mb-20 p-8 md:p-10">
           {/* 1st row */}
           <div className="md:flex gap-4">
             <div className="form-control md:w-1/3">
@@ -43,7 +43,7 @@ const Reservation = () => {
               </label>
               <input
                 type="number"
-                placeholder="Enter Your Name"
+                placeholder="Enter the number"
                 className="input input-bordered"
                 required
               />
@@ -68,7 +68,7 @@ const Reservation = () => {
               </label>
               <input
                 type="text"
-                placeholder="Enter Your Name"
+                placeholder="Enter Your Phone No."
                 className="input input-bordered"
                 required
               />
@@ -79,7 +79,7 @@ const Reservation = () => {
               </label>
               <input
                 type="email"
-                placeholder="Enter Your Name"
+                placeholder="Enter Your Email"
                 className="input input-bordered"
                 required
               />

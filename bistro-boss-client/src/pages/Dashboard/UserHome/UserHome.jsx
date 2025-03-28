@@ -32,7 +32,7 @@ const UserHome = () => {
               <FaShop className="text-5xl" />
               <div>
                 <h2 className="text-2xl font-bold">
-                  {String(200).padStart(2, "0")}
+                  {String(6).padStart(2, "0")}
                 </h2>
                 <p>Orders</p>
               </div>
