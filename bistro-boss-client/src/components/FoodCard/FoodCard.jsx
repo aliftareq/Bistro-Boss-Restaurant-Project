@@ -56,8 +56,25 @@ const FoodCard = ({ item }) => {
 
   return (
     <div className="card bg-base-100 w-80 shadow-xl">
-      <figure>
-        <img src={image} alt="Shoes" />
+      <figure
+        style={{
+          width: "300px",
+          height: "300px",
+          overflow: "hidden",
+          borderRadius: "12px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          margin: "0 auto",
+        }}
+      >
+        <img
+          src={image}
+          alt="image"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
       </figure>
       <p className="absolute right-0 bg-slate-900 text-white mr-4 mt-4 px-4 py-2">
         ${price}

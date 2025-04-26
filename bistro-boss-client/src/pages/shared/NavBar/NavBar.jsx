@@ -25,11 +25,6 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="hover:text-yellow-300" to="/contact">
-          Contact Us
-        </Link>
-      </li>
-      <li>
         <Link className="hover:text-yellow-300" to="/menu">
           Our Menu
         </Link>
@@ -37,6 +32,11 @@ const NavBar = () => {
       <li>
         <Link className="hover:text-yellow-300" to="/order/salads">
           Our Shop
+        </Link>
+      </li>
+      <li>
+        <Link className="hover:text-yellow-300" to="/contact">
+          Contact Us
         </Link>
       </li>
       {user && isAdmin && (
