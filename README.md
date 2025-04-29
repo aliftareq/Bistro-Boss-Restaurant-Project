@@ -1,3 +1,3 @@
-server: https://bistro-boss-server-mu-five.vercel.app
+server: http://localhost:5000
 
 live-site : https://bistro-boss-restaurant-f78d3.web.app

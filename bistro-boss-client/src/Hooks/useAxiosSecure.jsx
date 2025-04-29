@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
-  baseURL: "https://bistro-boss-server-mu-five.vercel.app",
+  baseURL: "http://localhost:5000/",
 });
 
 const useAxiosSecure = () => {

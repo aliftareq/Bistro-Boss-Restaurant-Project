@@ -2,8 +2,42 @@ import React from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { MdAccessTimeFilled, MdOutlinePhoneInTalk } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Reservation = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = async (data) => {
+    //now send the menu item data to the server with image
+    const BookingInfo = {
+      name: user?.displayName,
+      phone: data.phone,
+      email: user?.email,
+      numberOfguest: parseInt(data.guestNumber),
+      date: data.date,
+      time: data.time,
+    };
+    //console.log(BookingInfo);
+    const BookingRes = await axiosSecure.post("/bookings", BookingInfo);
+    console.log(BookingRes.data);
+    if (BookingRes.data.insertedId) {
+      //show success popup
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your Reservation have been booked successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      reset();
+    }
+  };
+
   return (
     <div>
       {/* table book form  */}
@@ -12,7 +46,10 @@ const Reservation = () => {
           subHeading="Reservation"
           heading="BOOK A TABLE"
         ></SectionTitle>
-        <form className="mx-2 md:mx-16 mb-20 p-8 md:p-10">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mx-2 md:mx-16 mb-20 p-8 md:p-10"
+        >
           {/* 1st row */}
           <div className="md:flex gap-4">
             <div className="form-control md:w-1/3">
@@ -21,9 +58,9 @@ const Reservation = () => {
               </label>
               <input
                 type="date"
-                placeholder="Enter Your Name"
+                placeholder="Enter the Date"
                 className="input input-bordered"
-                required
+                {...register("date", { required: true })}
               />
             </div>
             <div className="form-control md:w-1/3">
@@ -32,9 +69,9 @@ const Reservation = () => {
               </label>
               <input
                 type="Time"
-                placeholder="Enter Your Name"
+                placeholder="Enter the Time"
                 className="input input-bordered"
-                required
+                {...register("time", { required: true })}
               />
             </div>
             <div className="form-control md:w-1/3">
@@ -45,7 +82,7 @@ const Reservation = () => {
                 type="number"
                 placeholder="Enter the number"
                 className="input input-bordered"
-                required
+                {...register("guestNumber", { required: true })}
               />
             </div>
           </div>
@@ -58,8 +95,9 @@ const Reservation = () => {
               <input
                 type="text"
                 placeholder="Enter Your Name"
+                value={user?.displayName}
                 className="input input-bordered"
-                required
+                readOnly
               />
             </div>
             <div className="form-control md:w-1/3">
@@ -70,7 +108,7 @@ const Reservation = () => {
                 type="text"
                 placeholder="Enter Your Phone No."
                 className="input input-bordered"
-                required
+                {...register("phone", { required: true })}
               />
             </div>
             <div className="form-control md:w-1/3">
@@ -80,8 +118,9 @@ const Reservation = () => {
               <input
                 type="email"
                 placeholder="Enter Your Email"
+                value={user?.email}
                 className="input input-bordered"
-                required
+                readOnly
               />
             </div>
           </div>

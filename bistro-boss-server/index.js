@@ -39,6 +39,7 @@ async function run() {
         const usersCollection = client.db("BistroBossDB").collection("users")
         const menuCollection = client.db("BistroBossDB").collection("menu")
         const reviewsCollection = client.db("BistroBossDB").collection("reviews")
+        const bookingsCollection = client.db("BistroBossDB").collection("bookings")
         const cartCollection = client.db("BistroBossDB").collection("carts")
         const paymentCollection = client.db("BistroBossDB").collection("payments")
 
@@ -181,6 +182,13 @@ async function run() {
             const query = { _id: new ObjectId(id) };
             const result = await menuCollection.deleteOne(query)
             console.log(result);
+            res.send(result)
+        })
+
+        //Booking related api's
+        app.post('/bookings', verifytoken, async (req, res) => {
+            const Booking = req.body;
+            const result = await bookingsCollection.insertOne(Booking)
             res.send(result)
         })
         //review related api's
