@@ -191,6 +191,25 @@ async function run() {
             const result = await bookingsCollection.insertOne(Booking)
             res.send(result)
         })
+        app.get('/bookings', async (req, res) => {
+            const email = req?.query?.email
+            if (email) {
+                const result = await bookingsCollection.find({ email: email }).toArray()
+                res.send(result)
+            }
+            else {
+                const result = await bookingsCollection.find().toArray()
+                res.send(result)
+            }
+
+        })
+        app.delete('/bookings/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await bookingsCollection.deleteOne(query)
+            res.send(result)
+        })
+        
         //review related api's
         app.get('/reviews', async (req, res) => {
             const result = await reviewsCollection.find().toArray()
