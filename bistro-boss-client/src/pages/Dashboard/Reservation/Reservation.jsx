@@ -21,6 +21,7 @@ const Reservation = () => {
       numberOfguest: parseInt(data.guestNumber),
       date: data.date,
       time: data.time,
+      status: "Pending",
     };
     //console.log(BookingInfo);
     const BookingRes = await axiosSecure.post("/bookings", BookingInfo);

@@ -192,17 +192,25 @@ async function run() {
             res.send(result)
         })
         app.get('/bookings', async (req, res) => {
-            const email = req?.query?.email
-            if (email) {
-                const result = await bookingsCollection.find({ email: email }).toArray()
-                res.send(result)
+            const email = req?.query?.email;
+            
+            if (!email) {
+                return res.status(400).send({ error: "Email query parameter is required." });
             }
-            else {
-                const result = await bookingsCollection.find().toArray()
-                res.send(result)
+        
+            // Check if the user is admin
+            const user = await usersCollection.findOne({ email: email });
+            const isAdmin = user?.role === 'admin';
+        
+            let result;
+            if (isAdmin) {
+                result = await bookingsCollection.find().toArray(); // Admin gets all bookings
+            } else {
+                result = await bookingsCollection.find({ email: email }).toArray(); // Regular user gets only their bookings
             }
-
-        })
+        
+            res.send(result);
+        });
         app.delete('/bookings/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
@@ -211,6 +219,11 @@ async function run() {
         })
         
         //review related api's
+        app.post('/reviews', verifytoken, async (req, res) => {
+            const Review = req.body;
+            const result = await reviewsCollection.insertOne(Review)
+            res.send(result)
+        })
         app.get('/reviews', async (req, res) => {
             const result = await reviewsCollection.find().toArray()
             res.send(result)

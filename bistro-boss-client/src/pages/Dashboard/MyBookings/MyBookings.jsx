@@ -57,6 +57,7 @@ const MyBookings = () => {
                 <th>Number of guest</th>
                 <th>Date(yyyy-mm-dd)</th>
                 <th>Time</th>
+                <th>Status</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -73,6 +74,7 @@ const MyBookings = () => {
                   </td>
                   <td>{item?.date}</td>
                   <td>{item?.time}</td>
+                  <td>{item?.status}</td>
                   <th>
                     <button
                       onClick={() => handleDelete(item._id)}
