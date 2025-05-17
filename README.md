@@ -1,4 +1,3 @@
-Certainly! Here's a comprehensive overview of the **Bistro Boss Restaurant** project, integrating details from the live site, server, and available documentation:
 
 ---
 
@@ -52,7 +51,7 @@ Certainly! Here's a comprehensive overview of the **Bistro Boss Restaurant** pro
   * React Hook Form
   * React Query
   * React Toastify
-  * Date-fns([RemoteHub][1], [GitHub][2])
+  * Date-fns
 
 ---
 
