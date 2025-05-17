@@ -9,6 +9,33 @@ const ManageBookings = () => {
   const [bookings, refetch] = useBookings();
   //console.log(bookings);
   const axiosSecure = useAxiosSecure();
+
+  const handleApprove = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are willing to approve this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Book it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/bookings/${id}`).then((res) => {
+          if (res.data.modifiedCount  > 0) {
+            Swal.fire({
+              title: "Confirmed!",
+              text: "Your Reservation has been Confirmed.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
+  };
+
   const handleDelete = (id) => {
     console.log(id);
     Swal.fire({
@@ -74,7 +101,18 @@ const ManageBookings = () => {
                   </td>
                   <td>{item?.date}</td>
                   <td>{item?.time}</td>
-                  <td className="font-bold text-yellow-600">{item?.status}</td>
+                  <td>
+                    {item?.status == "Pending" ? (
+                      <button
+                        onClick={() => handleApprove(item._id)}
+                        className="btn btn-link text-yellow-500"
+                      >
+                        Approve
+                      </button>
+                    ) : (
+                      <p className="text-green-600 font-semibold">Confirmed</p>
+                    )}
+                  </td>
                   <th>
                     <button
                       onClick={() => handleDelete(item._id)}

@@ -74,7 +74,13 @@ const MyBookings = () => {
                   </td>
                   <td>{item?.date}</td>
                   <td>{item?.time}</td>
-                  <td>{item?.status}</td>
+                  <td>
+                    {item?.status == "Pending" ? (
+                      <p className="text-yellow-500 font-semibold">Pending</p>
+                    ) : (
+                      <p className="text-green-600 font-semibold">Confirmed</p>
+                    )}
+                  </td>
                   <th>
                     <button
                       onClick={() => handleDelete(item._id)}
