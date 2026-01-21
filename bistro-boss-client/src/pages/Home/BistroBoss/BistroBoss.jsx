@@ -1,14 +1,16 @@
-import React from "react";
 import "./BistroBoss.css";
 
 const BistroBoss = () => {
   return (
-    <section className="Bistro-item bg-fixed text-white px-10 py-16 xl:px-20 xl:py-32 my-20">
-      <div className="bg-white text-black px-8 py-12 xl:px-24 xl:py-32 flex flex-col justify-center items-center space-y-4">
-        <h3 className="text-lg xl:text-3xl uppercase font-bold italic">
-          Bistro-Boss
-        </h3>
-        <p className="text-center">
+    <section className="Bistro-item my-24 px-6 md:px-12 xl:px-24">
+      <div className="bistro-glass-card mx-auto max-w-4xl">
+        <span className="bistro-subtitle">Our Philosophy</span>
+
+        <h3 className="bistro-title">Bistro Boss</h3>
+
+        <div className="bistro-divider" />
+
+        <p className="bistro-description">
           Bistro-Boss is a premier chef service offering an exceptional dining
           experience with creative and flavorful dishes. Combining culinary
           artistry with fresh, high-quality ingredients, Bistro-Boss specializes
@@ -22,3 +24,4 @@ const BistroBoss = () => {
 };
 
 export default BistroBoss;
+

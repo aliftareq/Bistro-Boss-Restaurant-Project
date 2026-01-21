@@ -1,7 +1,78 @@
 .Bistro-item {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
     url("../../../assets/home/chef-service.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 6rem 0;
 }
+
+/* Premium floating card */
+.bistro-glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  animation: fadeUp 0.9s ease-out;
+}
+
+/* Small elegant label */
+.bistro-subtitle {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #b0894f; /* muted gold */
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+/* Main heading */
+.bistro-title {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1f2937;
+}
+
+/* Decorative divider */
+.bistro-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #b0894f,
+    transparent
+  );
+  margin: 1.5rem auto 2rem;
+}
+
+/* Description text */
+.bistro-description {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #374151;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Subtle entrance animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
