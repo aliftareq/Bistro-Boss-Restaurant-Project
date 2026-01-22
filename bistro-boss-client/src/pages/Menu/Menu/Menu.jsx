@@ -5,8 +5,6 @@ import dessertImg from "../../../assets/menu/dessert-bg.jpeg";
 import pizzaImg from "../../../assets/menu/pizza-bg.jpg";
 import saladImg from "../../../assets/menu/salad-bg.jpg";
 import soupImg from "../../../assets/menu/soup-bg.jpg";
-
-import PopulerMenu from "../../Home/PopulerMenu/PopulerMenu";
 import useMenu from "../../../Hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
@@ -28,6 +26,7 @@ const Menu = () => {
           img={menuImg}
           title="Our menu"
           text="Would you like to try a dish?"
+          link="/order/salads"
         ></Cover>
         <SectionTitle
           subHeading="Don't miss"
@@ -39,7 +38,8 @@ const Menu = () => {
         items={desserts}
         title="desserts"
         img={dessertImg}
-        text="Indulge in our decadent dessert selection, crafted to satisfy every sweet craving. From rich classics to modern delights, each treat is a celebration of flavor and finesse."
+        text="Indulge in our decadent dessert selection, crafted to satisfy every sweet craving. From rich classics to modern delights, 
+        each treat is a celebration of flavor and finesse."
       />
       <MenuCategory
         items={pizzas}
