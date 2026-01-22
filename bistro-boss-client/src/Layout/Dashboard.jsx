@@ -56,7 +56,7 @@ const Dashboard = () => {
         </button>
         <div
           className={`${
-            isBgWhite ? "bg-white" : "bg-base-200"
+            isBgWhite ? "bg-white" : "bg-white"
           } flex-1 p-8 min-h-screen`}
         >
           <Outlet></Outlet>

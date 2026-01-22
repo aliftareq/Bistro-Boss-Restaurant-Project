@@ -10,7 +10,7 @@ const ContactUs = () => {
   return (
     <div>
       <Helmet>
-        <title>BISTRO | </title>
+        <title>BISTRO | CONTACT </title>
       </Helmet>
       <Cover
         img={Banner}
@@ -29,7 +29,7 @@ const ContactUs = () => {
               <MdOutlinePhoneInTalk className="text-2xl stroke-[0.5]" />
             </div>
             <div className="bg-white border border-slate-200">
-              <div className="bg-base-200 mx-3 mb-3 text-center px-14 pt-6 pb-14">
+              <div className="bg-white mx-3 mb-3 text-center px-14 pt-6 pb-14">
                 <p className="font-semibold uppercase">Phone</p>
                 <p>+38 (012) 34 56 788</p>
                 <p>+38 (012) 34 56 789</p>
@@ -41,7 +41,7 @@ const ContactUs = () => {
               <FaLocationDot className="text-2xl stroke-[0.5]" />
             </div>
             <div className="bg-white border border-slate-200">
-              <div className="bg-base-200 mx-3 mb-3 text-center px-14 pt-6 pb-14">
+              <div className="bg-white mx-3 mb-3 text-center px-14 pt-6 pb-14">
                 <p className="font-semibold uppercase">ADDRESS</p>
                 <p>123 ABS Street, Uni 21, Bangladesh</p>
               </div>
@@ -52,7 +52,7 @@ const ContactUs = () => {
               <MdAccessTimeFilled className="text-2xl stroke-[0.5]" />
             </div>
             <div className="bg-white border border-slate-200">
-              <div className="bg-base-200 mx-3 mb-3 text-center px-14 pt-6 pb-14">
+              <div className="bg-white mx-3 mb-3 text-center px-14 pt-6 pb-14">
                 <p className="font-semibold uppercase">WORKING HOURS</p>
                 <p>Mon - Fri: 08:00 - 22:00 Sat - Sun: 10:00 - 23:00</p>
               </div>
@@ -66,7 +66,7 @@ const ContactUs = () => {
           subHeading="Send Us a Message"
           heading="CONTACT FORM"
         ></SectionTitle>
-        <form className="bg-base-200 mx-12 md:mx-32 mb-20 p-8 md:p-10">
+        <form className="bg-white mx-12 md:mx-32 mb-20 p-8 md:p-10">
           <div className="md:flex gap-4">
             <div className="form-control md:w-1/2">
               <label className="label">
@@ -75,7 +75,7 @@ const ContactUs = () => {
               <input
                 type="text"
                 placeholder="Enter Your Name"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 required
               />
             </div>
@@ -86,7 +86,7 @@ const ContactUs = () => {
               <input
                 type="email"
                 placeholder="Enter Your Email"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 required
               />
             </div>
@@ -98,7 +98,7 @@ const ContactUs = () => {
             <input
               type="text"
               placeholder="Enter Your Phone Number"
-              className="input input-bordered"
+              className="input input-bordered bg-white"
               required
             />
           </div>
@@ -108,7 +108,7 @@ const ContactUs = () => {
             </label>
             <textarea
               placeholder="Write Your message here"
-              className="textarea textarea-bordered h-32"
+              className="textarea textarea-bordered h-32 bg-white"
               required
             ></textarea>
           </div>

@@ -60,7 +60,7 @@ const Reservation = () => {
               <input
                 type="date"
                 placeholder="Enter the Date"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 {...register("date", { required: true })}
               />
             </div>
@@ -71,7 +71,7 @@ const Reservation = () => {
               <input
                 type="Time"
                 placeholder="Enter the Time"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 {...register("time", { required: true })}
               />
             </div>
@@ -82,7 +82,7 @@ const Reservation = () => {
               <input
                 type="number"
                 placeholder="Enter the number"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 {...register("guestNumber", { required: true })}
               />
             </div>
@@ -97,7 +97,7 @@ const Reservation = () => {
                 type="text"
                 placeholder="Enter Your Name"
                 value={user?.displayName}
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 readOnly
               />
             </div>
@@ -108,7 +108,7 @@ const Reservation = () => {
               <input
                 type="text"
                 placeholder="Enter Your Phone No."
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 {...register("phone", { required: true })}
               />
             </div>
@@ -120,7 +120,7 @@ const Reservation = () => {
                 type="email"
                 placeholder="Enter Your Email"
                 value={user?.email}
-                className="input input-bordered"
+                className="input input-bordered bg-white"
                 readOnly
               />
             </div>
@@ -146,7 +146,7 @@ const Reservation = () => {
               <MdOutlinePhoneInTalk className="text-2xl stroke-[0.5]" />
             </div>
             <div className="bg-white border border-slate-200">
-              <div className="bg-base-200 mx-3 mb-3 text-center px-4 pt-6 pb-14">
+              <div className="bg-white mx-3 mb-3 text-center px-4 pt-6 pb-14">
                 <p className="font-semibold uppercase">Phone</p>
                 <p>+38 (012) 34 56 788</p>
                 <p>+38 (012) 34 56 789</p>
@@ -158,7 +158,7 @@ const Reservation = () => {
               <FaLocationDot className="text-2xl stroke-[0.5]" />
             </div>
             <div className="bg-white border border-slate-200">
-              <div className="bg-base-200 mx-3 mb-3 text-center px-4 pt-6 pb-14">
+              <div className="bg-white mx-3 mb-3 text-center px-4 pt-6 pb-14">
                 <p className="font-semibold uppercase">ADDRESS</p>
                 <p>123 ABS Street, Uni 21, Bangladesh</p>
               </div>
@@ -169,7 +169,7 @@ const Reservation = () => {
               <MdAccessTimeFilled className="text-2xl stroke-[0.5]" />
             </div>
             <div className="bg-white border border-slate-200">
-              <div className="bg-base-200 mx-3 mb-3 text-center px-4 pt-6 pb-14">
+              <div className="bg-white mx-3 mb-3 text-center px-4 pt-6 pb-14">
                 <p className="font-semibold uppercase">WORKING HOURS</p>
                 <p>Mon - Fri: 08:00 - 22:00</p>
               </div>

@@ -58,7 +58,7 @@ const UpdateItem = () => {
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-base-200 mx-12 md:mx-32 mb-20 p-8 md:p-10"
+          className="bg-white mx-12 md:mx-32 mb-20 p-8 md:p-10"
         >
           <div className="form-control">
             <label className="label">
@@ -69,7 +69,7 @@ const UpdateItem = () => {
               defaultValue={name}
               placeholder="Recipe Name"
               {...register("name", { required: true })}
-              className="input input-bordered"
+              className="input input-bordered bg-white"
             />
           </div>
           <div className="md:flex gap-4">
@@ -80,7 +80,7 @@ const UpdateItem = () => {
               <select
                 defaultValue={category}
                 {...register("category", { required: true })}
-                className="select select-bordered w-full max-w-xs"
+                className="select select-bordered w-full bg-white max-w-xs"
               >
                 <option disabled value="default">
                   Select a Category
@@ -101,7 +101,7 @@ const UpdateItem = () => {
                 {...register("price", { required: true })}
                 type="text"
                 placeholder="Price"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
               />
             </div>
           </div>
@@ -113,14 +113,14 @@ const UpdateItem = () => {
               defaultValue={recipe}
               {...register("recipe", { required: true })}
               placeholder="Recipe Details"
-              className="textarea textarea-bordered h-32"
+              className="textarea textarea-bordered h-32 bg-white"
             ></textarea>
           </div>
           <div className="my-5">
             <input
               {...register("image", { required: true })}
               type="file"
-              className="file-input file-input-bordered w-full max-w-xs"
+              className="file-input file-input-bordered w-full bg-white max-w-xs"
             />
           </div>
           <div className="my-5 flex justify-center items-center">

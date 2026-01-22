@@ -100,7 +100,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                   required
                 />
               </div>
@@ -112,7 +112,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                   required
                 />
               </div>
@@ -125,7 +125,7 @@ const Login = () => {
                   name="captcha"
                   onBlur={handlevalidateCaptcha}
                   placeholder="Type the captcha here"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                   required
                 />
               </div>
@@ -148,7 +148,7 @@ const Login = () => {
                 <div className="flex justify-evenly text-2xl pt-2">
                   <button
                     onClick={handleGoogleSignIn}
-                    className="btn w-full bg-[#D1A054] flex items-center hover:bg-orange-400"
+                    className="btn w-full bg-[#D1A054] flex items-center text-white hover:bg-orange-400"
                   >
                     <FaGoogle /> Sign with Google
                   </button>

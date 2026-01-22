@@ -54,7 +54,7 @@ const AddReviews = () => {
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-base-200 mx-4 md:mx-32 mb-20 p-8 md:p-10"
+          className="bg-white mx-4 md:mx-32 mb-20 p-8 md:p-10"
         >
           <div className="flex flex-col justify-center items-center">
             <p className="text-3xl font-cinzel uppercase">Rate us!</p>
@@ -78,7 +78,7 @@ const AddReviews = () => {
                 {...register("likedRecipe", { required: true })}
                 type="text"
                 placeholder="Recipe you liked most"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
               />
             </div>
             <div className="form-control">
@@ -91,7 +91,7 @@ const AddReviews = () => {
                 {...register("suggestion", { required: true })}
                 type="text"
                 placeholder="Sugggestion"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
               />
             </div>
             <div className="form-control">
@@ -103,7 +103,7 @@ const AddReviews = () => {
               <textarea
                 {...register("details", { required: true })}
                 placeholder="Review in detail"
-                className="textarea textarea-bordered h-32"
+                className="textarea textarea-bordered h-32 bg-white"
               ></textarea>
             </div>
           </div>

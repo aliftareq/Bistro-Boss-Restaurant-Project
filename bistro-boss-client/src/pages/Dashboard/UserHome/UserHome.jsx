@@ -24,25 +24,27 @@ const UserHome = () => {
             <div className="flex justify-center items-center w-64 h-32 md:w-72 md:h-32 bg-gradient-to-r from-[#BB34F5] to-[#FCDBFF] rounded-lg text-white gap-4">
               <IoWalletSharp className="text-5xl" />
               <div>
-                <h2 className="text-2xl font-bold">$205.75</h2>
+                <h2 className="text-2xl font-bold">$0.00</h2>
                 <p>Cash</p>
               </div>
             </div>
-            <div className="flex justify-center items-center w-64 h-32 md:w-72 md:h-32 bg-gradient-to-r from-[#D3A256] to-[#FDE8C0] rounded-lg text-white gap-4">
+            <div
+              className="flex justify-center items-center w-64 h-32 md:w-72 md:h-32 bg-gradient-to-r 
+            from-[#D3A256] to-[#FDE8C0] rounded-lg text-white gap-4"
+            >
               <FaShop className="text-5xl" />
               <div>
-                <h2 className="text-2xl font-bold">
-                  {String(6).padStart(2, "0")}
-                </h2>
+                <h2 className="text-2xl font-bold">0</h2>
                 <p>Orders</p>
               </div>
             </div>
-            <div className="flex justify-center items-center w-64 h-32 md:w-72 md:h-32 bg-gradient-to-r from-[#FE4880] to-[#FECDE9] rounded-lg text-white gap-4">
+            <div
+              className="flex justify-center items-center w-64 h-32 md:w-72 md:h-32 bg-gradient-to-r 
+            from-[#FE4880] to-[#FECDE9] rounded-lg text-white gap-4"
+            >
               <MdCall className="text-5xl" />
               <div>
-                <h2 className="text-2xl font-bold">
-                  {String(3).padStart(2, "0")}
-                </h2>
+                <h2 className="text-2xl font-bold">0</h2>
                 <p>Contact</p>
               </div>
             </div>
@@ -67,19 +69,19 @@ const UserHome = () => {
             <div className="my-4 text-lg uppercase font-cinzel">
               <p className="flex gap-1 text-[#0088FE] items-center">
                 <FaCartShopping />
-                Orders : 6
+                Orders : 0
               </p>
               <p className="flex gap-1 text-[#00C4A1] items-center">
                 <FaStar />
-                Reviews : 2
+                Reviews : 0
               </p>
               <p className="flex gap-1 text-[#FFBB28] items-center">
                 <FaCalendarAlt />
-                Bookings : 1
+                Bookings : 0
               </p>
               <p className="flex gap-1 text-[#FF8042] items-center">
                 <IoWalletSharp />
-                Payments : 3
+                Payments : 0
               </p>
             </div>
           </div>

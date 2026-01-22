@@ -55,7 +55,7 @@ const AddItems = () => {
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-base-200 mx-4 md:mx-32 mb-20 p-8 md:p-10"
+          className="bg-white mx-4 md:mx-32 mb-20 p-8 md:p-10"
         >
           <div className="form-control">
             <label className="label">
@@ -65,7 +65,7 @@ const AddItems = () => {
               {...register("name", { required: true })}
               type="text"
               placeholder="Recipe Name"
-              className="input input-bordered"
+              className="input input-bordered bg-white"
             />
           </div>
           <div className="md:flex gap-4">
@@ -75,7 +75,7 @@ const AddItems = () => {
               </label>
               <select
                 {...register("category", { required: true })}
-                className="select select-bordered w-full max-w-xs"
+                className="select select-bordered bg-white w-full max-w-xs"
               >
                 <option disabled value="default">
                   Select a Category
@@ -95,7 +95,7 @@ const AddItems = () => {
                 {...register("price", { required: true })}
                 type="text"
                 placeholder="Price"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
               />
             </div>
           </div>
@@ -106,14 +106,14 @@ const AddItems = () => {
             <textarea
               {...register("recipe", { required: true })}
               placeholder="Recipe Details"
-              className="textarea textarea-bordered h-32"
+              className="textarea textarea-bordered h-32 bg-white"
             ></textarea>
           </div>
           <div className="my-5">
             <input
               {...register("image", { required: true })}
               type="file"
-              className="file-input file-input-bordered w-full max-w-xs"
+              className="file-input file-input-bordered w-full bg-white max-w-xs"
             />
           </div>
           <div className="my-5 flex justify-center items-center">

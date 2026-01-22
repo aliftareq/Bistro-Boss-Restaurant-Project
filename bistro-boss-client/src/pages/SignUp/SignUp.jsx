@@ -100,7 +100,7 @@ const SignUp = () => {
                   type="text"
                   {...register("name", { required: true })}
                   placeholder="Type Here"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
@@ -114,7 +114,7 @@ const SignUp = () => {
                   type="text"
                   {...register("photoURL", { required: true })}
                   placeholder="Enter a Photo URL"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
                 {errors.photoURL && (
                   <span className="text-red-500">Photo URL is required</span>
@@ -129,7 +129,7 @@ const SignUp = () => {
                   {...register("email", { required: true })}
                   name="email"
                   placeholder="Type Here"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
                 {errors.email && (
                   <span className="text-red-500">Email is required</span>
@@ -148,7 +148,7 @@ const SignUp = () => {
                   })}
                   name="password"
                   placeholder="Enter your Password"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
                 {errors.password?.type === "required" && (
                   <span className="text-red-500">Password is required</span>
@@ -183,7 +183,7 @@ const SignUp = () => {
                 <div className="flex justify-evenly text-2xl pt-2">
                   <button
                     onClick={handleGoogleSignIn}
-                    className="btn w-full bg-[#D1A054] flex items-center hover:bg-orange-400"
+                    className="btn w-full bg-[#D1A054] flex items-center text-white hover:bg-orange-400"
                   >
                     <FaGoogle /> Sign with Google
                   </button>

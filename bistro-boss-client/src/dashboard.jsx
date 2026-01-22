@@ -122,7 +122,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div className={`${isBgWhite ? "bg-white" : "bg-base-200"} flex-1 p-8`}>
+      <div className={`${isBgWhite ? "bg-white" : "bg-white"} flex-1 p-8`}>
         <Outlet></Outlet>
       </div>
     </div>
