@@ -14,37 +14,47 @@ const AddItems = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    //image upload to imagebb and then get an url
-    const imageFile = { image: data.image[0] };
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-Type": "multipart/form-data",
-      },
-    });
-    if (res.data.success) {
-      //now send the menu item data to the server with image
-      const menuItem = {
-        name: data.name,
-        category: data.category,
-        price: parseFloat(data.price),
-        recipe: data.recipe,
-        image: res?.data?.data?.display_url,
-      };
-      const menuRes = await axiosSecure.post("/menu", menuItem);
-      console.log(menuRes.data);
-      if (menuRes.data.insertedId) {
-        //show success popup
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "You have successfully Add an Items to Menu.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        reset();
+    try {
+      // ✅ correct multipart formData
+      const formData = new FormData();
+      formData.append("image", data.image[0]);
+
+      const res = await axiosPublic.post(image_hosting_api, formData);
+
+      console.log("IMG RES:", res.data);
+      const imageUrl = res?.data?.data?.display_url;
+
+      if (res.data.success && imageUrl) {
+        const menuItem = {
+          name: data.name,
+          category: data.category,
+          price: parseFloat(data.price),
+          recipe: data.recipe,
+          image: imageUrl,
+        };
+
+        const menuRes = await axiosSecure.post("/menu", menuItem);
+
+        if (menuRes.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You have successfully added an item to the menu.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
+        }
+      } else {
+        console.log("ImgBB upload failed:", res.data);
+        Swal.fire("Upload failed", "Image could not be uploaded.", "error");
       }
+    } catch (error) {
+      console.log(error);
+      Swal.fire("Error", "Something went wrong while uploading.", "error");
     }
   };
+
   return (
     <div>
       <SectionTitle
